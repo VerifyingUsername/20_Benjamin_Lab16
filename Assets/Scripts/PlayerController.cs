@@ -41,9 +41,11 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(0, Time.deltaTime * rotateSpeed, 0));
         }
 
-        if( Input.GetKey(KeyCode.Space))
+        if( Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
+            GameManagerController.instance.iCounter++;
+            GameManagerController.instance.spaceCounterGO.GetComponent<Text>().text = "Space Pressed: " + GameManagerController.instance.iCounter;
         }
     }
 
